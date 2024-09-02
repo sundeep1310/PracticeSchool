@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <nav class="py-6 px-8 bg-purple-800 flex items-center justify-between">
+    <h1 class="text-xl text-white"><a href="{% url 'core:index'%}">Practice School</a></h1>
+    <div class="text-white space-x-4">
+      {% if request.user.is_authenticated %}
+      <a href="{% url 'project:projects' %}" class="py-4 px-8 bg-sky-600 text-white">Projects</a>
+      <a href = "{%url 'account:logout' %}" class="py-4 px-8 bg-sky-600 text-white">Logout</a>
+      {% else %}
+      <a href="{% url 'account:login'%}" class=" py-4 px-8 bg-slate-600">login</a>
+      <a href="{% url 'account:signup'%}" class="  py-4 px-8 bg-slate-600">Sign up</a>
+      {% endif %}
+        <a href="{% url 'core:about'%}">About us</a>
+    </div>
+  </nav>
+
+  <main class="py-6 px-4">
+
+ {% block content %}
+ {% endblock %}
+
+
+ 
+  </main>
+  
+
+  <footer class="py-8 px-8 text-center">
+    write to us at <mail href="#">practice@school.com</mail>
+</footer>
+</body>
+</html>
